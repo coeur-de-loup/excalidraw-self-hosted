@@ -4,6 +4,11 @@ services:
   app:
     image: alswl/excalidraw:v0.17.3-fork-b1
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     environment:
       - VITE_APP_BACKEND_V2_GET_URL=https://${STORAGE_BACKEND_HOST}/api/v2/scenes/
       - VITE_APP_BACKEND_V2_POST_URL=https://${STORAGE_BACKEND_HOST}/api/v2/scenes/
