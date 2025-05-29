@@ -83,6 +83,8 @@ services:
       - "traefik.http.routers.${TRAEFIK_LABEL_ID}-db-${TRAEFIK_ENTRYPOINT}.entrypoints=${TRAEFIK_ENTRYPOINT}"
 
 networks:
+  ${TRAEFIK_NETWORK_NAME}:
+    external: true
   proxy:
     name: ${TRAEFIK_NETWORK_NAME}
     external: true
