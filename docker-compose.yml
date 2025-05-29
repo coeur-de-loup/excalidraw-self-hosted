@@ -1,6 +1,20 @@
 version: "3.7"
 
 services:
+  excalidraw-alternative-store:
+    image: ghcr.io/cocreators-ee/excalidraw-alternative-store
+    restart: unless-stopped
+    environment:
+      PORT: 80
+      OVERRIDE_PROTOCOL: https
+      CORS_ALLOW_ORIGINS: https://${APP_HOST}
+    volumes:
+      - ./storage:/src/storage
+    networks:
+      - coolify
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
   app:
     image: alswl/excalidraw:v0.17.3-fork-b1
     restart: unless-stopped
