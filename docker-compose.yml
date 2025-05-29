@@ -84,7 +84,7 @@ services:
 
 networks:
 
-  proxy:
+  exqualidraw-proxy:
     name: exqualidraw-proxy
     external: true
   draw-internal:
